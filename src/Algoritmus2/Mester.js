@@ -21,13 +21,9 @@ function szamol(){
     } else {
     e=nlog-1;
   }
-  document.getElementById("seged").innerHTML = e.toFixed(3);
-  document.getElementById("seged1").innerHTML = e.toFixed(3);
-  document.getElementById("seged2").innerHTML = e.toFixed(3);
 
   document.getElementById("log").innerHTML = nlog;
   document.getElementById("log2").innerHTML = nlog;
-  document.getElementById("log3").innerHTML = nlog;
 
   if(a>=1 && b>1)
   {
@@ -36,16 +32,40 @@ function szamol(){
     {
       eset=2;    
     }
-    if(nlog>1 && (nlog-e)==1  && n=="n" && nlog>1 || n=="n2" && nlog>2 || n=="nlogn" /*&& nlog==*/)
+    if(nlog>1 && (nlog-e)==1 && n=="n" || nlog>2 && n=="n2")
     {
-      eset=1;      
+      eset=1;    
+      document.getElementById("seged2").innerHTML = e.toFixed(3);
+      document.getElementById("seged1").innerHTML = e.toFixed(3);
+      document.getElementById("seged").innerHTML = e.toFixed(3); 
     }
-    if(nlog<1 || (nlog+e)==1)
+    if(nlog>2 && n=="n2")
+    { 
+      e-=1;
+      document.getElementById("seged2").innerHTML = e.toFixed(3);
+      document.getElementById("seged1").innerHTML = e.toFixed(3);
+      document.getElementById("seged").innerHTML = e.toFixed(3);
+    }
+
+//a nlogn esetet nem tudom hogyan még
+
+    if(nlog<1 && (nlog+e)==1 && n=="n" && nlog<2 && n=="n2")
     {
-      eset=3;      
+      eset=3;     
+      document.getElementById("seged2").innerHTML = e.toFixed(3);
+      document.getElementById("seged1").innerHTML = e.toFixed(3);
+      document.getElementById("seged").innerHTML = e.toFixed(3); 
+    }
+    if(nlog<2 && n=="n2")
+    { 
+      e+=1;
+      document.getElementById("seged2").innerHTML = e.toFixed(3);
+      document.getElementById("seged1").innerHTML = e.toFixed(3);
+      document.getElementById("seged").innerHTML = e.toFixed(3);
     }
     document.getElementById("eset").innerHTML = eset;
   }
+
   var muvelet;
   if(eset==1 || eset==2)
   {
@@ -53,6 +73,7 @@ function szamol(){
     document.getElementById("muvelet").innerHTML = muvelet;
     document.getElementById("muvelet1").innerHTML = muvelet;
     document.getElementById("muvelet2").innerHTML = muvelet;
+
     document.getElementById("eredmeny").innerHTML = (nlog-e.toFixed(3)).toFixed(3);
   } else {
     muvelet="+";
@@ -61,8 +82,18 @@ function szamol(){
     document.getElementById("muvelet2").innerHTML = muvelet;
     document.getElementById("eredmeny").innerHTML = (nlog+e.toFixed(3)).toFixed(3);
   }
-
 }
+
+function show()
+{
+  var x=document.getElementById("show");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+
 
 function Mester() {
  
@@ -77,7 +108,7 @@ function Mester() {
       <a>f(n) : </a><input type="text" id="NN" className="mesterinput2"></input><br/><br/>
       </div>
       <br/>
-      <div className="adminsight">
+      <div className="adminsight" id="show">
         <p>
           <a>a= </a><a id="aa" className="mestera"></a>
           <a> b= </a><a id="bb" className="mestera"></a>
@@ -101,7 +132,7 @@ function Mester() {
         <br/>
         <a> = O(n^<a id="log2"/><a id="muvelet"/><a id="seged2"/>)=O(n^<a id="eredmeny"/>)</a>
         <br/>
-        <a>Eredmény: T(n)= O(<a id="nn2"/>^<a id="log3"/>)</a>
+        <a>Eredmény: T(n)= O(<a id="nn2"/>)</a>
       </div>
     </form>
   );
