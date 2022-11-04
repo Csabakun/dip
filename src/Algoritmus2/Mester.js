@@ -108,6 +108,12 @@ function Mester() {
       <a>f(n) : </a><input type="text" id="NN" className="mesterinput2"></input><br/><br/>
       </div>
       <br/>
+      <br/>
+      <div>
+        <a>a = T elem szorzata</a>
+        <a>b = a zárójeles n elem szorzata</a>
+        <a>f = a + jel utáni érték</a>
+      </div>
       <div className="adminsight" id="show">
         <p>
           <a>a= </a><a id="aa" className="mestera"></a>
